@@ -31,8 +31,6 @@ if st.session_state.popup_last_closed:
 
 # Fancy popup (no close button)
 if st.session_state.show_referral_popup:
-   
-    # Referral Popup (always shows, no close button)
 st.markdown(
     """
     <div style="border: 3px dashed #FF7F50; padding: 20px; border-radius: 15px;
