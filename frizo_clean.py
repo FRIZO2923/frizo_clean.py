@@ -12,49 +12,6 @@ st.set_page_config(page_title="Frizo Predictor", layout="centered")
 # Title
 st.markdown("<h1 style='text-align: center;'>🎯 FRIZO PREDICTOR 😈</h1>", unsafe_allow_html=True)
 
-# Initialize session state variables
-if "show_referral_popup" not in st.session_state:
-    st.session_state.show_referral_popup = True
-
-if "popup_last_closed" not in st.session_state:
-    st.session_state.popup_last_closed = None
-
-# Reset popup after 5 mins
-if st.session_state.popup_last_closed:
-    elapsed = datetime.datetime.now() - st.session_state.popup_last_closed
-    if elapsed.total_seconds() > 300:
-        st.session_state.show_referral_popup = True
-
-# Show referral popup
-if st.session_state.show_referral_popup:
-    st.markdown(
-        """
-        <div style="border: 3px dashed #FF7F50; padding: 20px; border-radius: 15px;
-                    background-color: #fff8f0; text-align: center; font-size: 18px;
-                    box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin-top: 20px; animation: pulse 2s infinite;">
-            🤑 <strong style="font-size: 22px;">Get ₹100 Cashback</strong> on ₹300 Recharge!<br><br>
-            👉 Create a new account using our referral link to unlock secret prediction benefits.<br><br>
-            🔗 <a href="https://www.bigdaddygame.net//#/register?invitationCode=Narn6464148"
-                 target="_blank" style="text-decoration: none; color: #FF4500; font-weight: bold;">
-                 🔥 Click Here to Register Now
-            </a>
-        </div>
-
-        <style>
-        @keyframes pulse {
-            0% {transform: scale(1);}
-            50% {transform: scale(1.03);}
-            100% {transform: scale(1);}
-        }
-        </style>
-        """,
-        unsafe_allow_html=True
-    )
-
-    if st.button("❌ Close Message"):
-        st.session_state.show_referral_popup = False
-        st.session_state.popup_last_closed = datetime.datetime.now()
-
 # Smooth timer synced to IST
 ist = pytz.timezone("Asia/Kolkata")
 now = datetime.datetime.now(ist)
