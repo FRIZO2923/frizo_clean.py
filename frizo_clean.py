@@ -15,10 +15,34 @@ st.markdown("<h1 style='text-align: center;'>🎯 FRIZO PREDICTOR 😈</h1>", un
 if "show_referral" not in st.session_state:
     st.session_state.show_referral = True
 
-if st.session_state.show_referral:
-    st.info("🤑 Use referral link for bonus: [Click here](https://www.bigdaddygame.net//#/register?invitationCode=Narn6464148)")
-    if st.button("Close Message"):
-        st.session_state.show_referral = False
+if st.session_state.show_referral_popup:
+    st.markdown(
+        """
+        <div style="border: 3px dashed #FF7F50; padding: 20px; border-radius: 15px;
+                    background-color: #fff8f0; text-align: center; font-size: 18px;
+                    box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin-top: 20px; animation: pulse 2s infinite;">
+            🤑 <strong style="font-size: 22px;">Get ₹100 Cashback</strong> on ₹300 Recharge!<br><br>
+            👉 Create a new account using our referral link to unlock secret prediction benefits.<br><br>
+            🔗 <a href="https://www.bigdaddygame.net//#/register?invitationCode=Narn6464148"
+                 target="_blank" style="text-decoration: none; color: #FF4500; font-weight: bold;">
+                 🔥 Click Here to Register Now
+            </a>
+        </div>
+
+        <style>
+        @keyframes pulse {
+            0% {transform: scale(1);}
+            50% {transform: scale(1.03);}
+            100% {transform: scale(1);}
+        }
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+    if st.button("❌ Close Message"):
+        st.session_state.show_referral_popup = False
+        st.session_state.popup_last_closed = datetime.datetime.now()
+
 
 # Show time
 ist = pytz.timezone("Asia/Kolkata")
