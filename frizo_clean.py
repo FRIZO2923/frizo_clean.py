@@ -16,12 +16,20 @@ if "show_referral" not in st.session_state:
     st.session_state.show_referral = True
 
 # Initialize session state variables
+# Initialize
 if "show_referral_popup" not in st.session_state:
     st.session_state.show_referral_popup = True
 
 if "popup_last_closed" not in st.session_state:
     st.session_state.popup_last_closed = None
 
+# Reset popup after 5 mins
+if st.session_state.popup_last_closed:
+    elapsed = datetime.datetime.now() - st.session_state.popup_last_closed
+    if elapsed.total_seconds() > 300:
+        st.session_state.show_referral_popup = True
+
+# Fancy popup (no close button)
 if st.session_state.show_referral_popup:
     st.markdown(
         """
@@ -46,6 +54,7 @@ if st.session_state.show_referral_popup:
         """,
         unsafe_allow_html=True
     )
+
     if st.button("❌ Close Message"):
         st.session_state.show_referral_popup = False
         st.session_state.popup_last_closed = datetime.datetime.now()
