@@ -15,6 +15,13 @@ st.markdown("<h1 style='text-align: center;'>🎯 FRIZO PREDICTOR 😈</h1>", un
 if "show_referral" not in st.session_state:
     st.session_state.show_referral = True
 
+# Initialize session state variables
+if "show_referral_popup" not in st.session_state:
+    st.session_state.show_referral_popup = True
+
+if "popup_last_closed" not in st.session_state:
+    st.session_state.popup_last_closed = None
+
 if st.session_state.show_referral_popup:
     st.markdown(
         """
